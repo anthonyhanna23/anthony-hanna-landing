@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0d0d0d">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Anthony Hanna</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #0d0d0d;
+      color: #ffffff;
+      font-family: 'Poppins', sans-serif;
+      min-height: 100dvh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: max(32px, env(safe-area-inset-top)) 20px max(32px, env(safe-area-inset-bottom));
+    }
+
+    .card {
+      width: 100%;
+      max-width: 390px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .avatar-wrap {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid #8fe832;
+      margin-bottom: 16px;
+      flex-shrink: 0;
+    }
+
+    .avatar-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.2);
+      transform-origin: center;
+    }
+
+    .name {
+      font-size: 2.4rem;
+      font-weight: 900;
+      font-style: italic;
+      color: #ffffff;
+      text-align: center;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      margin-top: 10px;
+      font-size: 0.62rem;
+      font-weight: 400;
+      color: #8fe832;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      text-align: center;
+    }
+
+    .links {
+      margin-top: 32px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .link-btn {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      padding: 16px 20px;
+      background-color: #1a1a1a;
+      border: 0.5px solid rgba(143, 232, 50, 0.5);
+      border-radius: 10px;
+      color: #ffffff;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 400;
+      text-decoration: none;
+      -webkit-tap-highlight-color: transparent;
+      transition: background-color 0.12s ease, border-color 0.12s ease;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .link-btn:hover,
+    .link-btn:active {
+      background-color: #1f1f1f;
+      border-color: #8fe832;
+    }
+
+    .link-btn svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      color: #8fe832;
+    }
+
+    .link-btn .btn-label {
+      flex: 1;
+      text-align: center;
+    }
+
+    .link-btn .btn-spacer {
+      width: 18px;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="avatar-wrap"><img src="DSC00052136 2.webp" alt="Anthony Hanna"></div>
+    <h1 class="name">Anthony Hanna</h1>
+    <p class="subtitle">Co-Founder&ensp;|&ensp;Digital Media</p>
+    <div class="links" id="links"></div>
+  </div>
+
+  <script>
+    // ============================================================
+    // EDIT URLs HERE
+    // ============================================================
+    const URL_PICCO_MEDIA = 'https://piccomedia.com';
+    const URL_LINKEDIN    = 'https://www.linkedin.com/in/anthony-hanna-493b66263/';
+    const URL_INSTAGRAM   = 'https://www.instagram.com/anthonyhphotos/';
+    const URL_PORTFOLIO   = 'https://biggeegreen.wixsite.com/anthonyhphotos/photography';
+    const URL_EMAIL       = 'mailto:anthonyh1326@gmail.com';
+    // ============================================================
+
+    const A = 'xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"';
+
+    const icons = {
+      globe:     `<svg ${A}><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`,
+      linkedin:  `<svg ${A}><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>`,
+      instagram: `<svg ${A}><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>`,
+      camera:    `<svg ${A}><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>`,
+      mail:      `<svg ${A}><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>`,
+    };
+
+    const buttons = [
+      { label: 'Picco Media',           url: URL_PICCO_MEDIA, icon: icons.globe     },
+      { label: 'LinkedIn',              url: URL_LINKEDIN,    icon: icons.linkedin  },
+      { label: 'Instagram',             url: URL_INSTAGRAM,   icon: icons.instagram },
+      { label: 'Photography Portfolio', url: URL_PORTFOLIO,   icon: icons.camera    },
+      { label: 'Email',                 url: URL_EMAIL,       icon: icons.mail      },
+    ];
+
+    const container = document.getElementById('links');
+
+    buttons.forEach(({ label, url, icon }) => {
+      const a = document.createElement('a');
+      a.href = url;
+      a.className = 'link-btn';
+      if (!url.startsWith('mailto:')) {
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+      }
+      a.innerHTML = `${icon}<span class="btn-label">${label}</span><span class="btn-spacer" aria-hidden="true"></span>`;
+      container.appendChild(a);
+    });
+  </script>
+</body>
+</html>
